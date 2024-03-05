@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ dept }}</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px; /* Add some padding to the body */
+    background-color: #f0f0f0;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .card {
+    width: calc(33.33% - 20px); /* Calculate width for 3 cards with spacing */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+  }
+
+  .card h2 {
+    font-size: 18px;
+    margin-top: 0;
+    cursor: pointer;
+  }
+
+  .card-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .report-button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .show {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<h1>{{ dept }} DEPARTMENT</h1>
+<div class="card-container">
+  {% for row in data %}
+  <div class="card">
+    <h2 onclick="toggleDetails(this)" class="show">{{ row.1 }}</h2>
+    <p><strong>UID NO.:</strong> {{ row.15 }}</p>
+    <div class="card-content">
+      <p><strong>Name of Machine:</strong> {{ row.1 }}</p>
+      <p><strong>Type:</strong> {{ row.2 }}</p>
+      <p><strong>Manufacturer:</strong> {{ row.3 }}</p>
+      <p><strong>Model Number:</strong> {{ row.4 }}</p>
+      <p><strong>Features:</strong> {{ row.5 }}</p>
+      <p><strong>Dimensions:</strong> {{ row.6 }}</p>
+      <p><strong>Weight(kg):</strong> {{ row.7 }}</p>
+      <p><strong>Power:</strong> {{ row.8 }}</p>
+      <p><strong>Certifications:</strong> {{ row.9 }}</p>
+      <p><strong>Preventive Maintenance:</strong> {{ row.10 }}</p>
+      <p><strong>Vendor Name:</strong> {{ row.11 }}</p>
+      <p><strong>AMC Inclusions:</strong> {{ row.12 }}</p>
+      <p><strong>CMC Inclusions:</strong> {{ row.13 }}</p>
+      <p><strong>Status:</strong> {{ row.14 }}</p>
+      <p><strong>Location:</strong> {{ row.16 }}</p>
+      <a href="{% url 'update_room' %}?model_no={{ row.4 }}">Update Location</a>
+      <a href="{% url 'report_problem' %}?model_no={{ row.4 }}&uid={{ row.15 }}&name={{ row.1 }}&dept={{ dept }}"><button type="button" class="report-button">Report Problem</button></a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<script>
+function toggleDetails(element) {
+  var card = element.closest('.card');
+  var cardContent = card.querySelector('.card-content');
+  if (cardContent.style.maxHeight) {
+    cardContent.style.maxHeight = null;
+  } else {
+    cardContent.style.maxHeight = cardContent.scrollHeight + "px";
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Report Problem</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    resize: vertical;
+  }
+
+  input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+<h1>Report Problem</h1>
+<form method="post">
+    {% csrf_token %}
+  <label >Model No.:</label>
+  <input type="text" id="name" name="name" value="{{ data.0 }}">
+
+  <label for="modelNo">Model No.:</label>
+  <input type="text" id="modelNo" name="modelNo" value="{{ data.1 }}">
+
+  <label for="uid">UID:</label>
+  <input type="text" id="uid" name="uid" value="{{ data.2 }}">
+
+  <label for="problem">Problem:</label>
+  <textarea id="problem" name="problem" rows="5" placeholder="Describe the problem..."></textarea>
+
+  <input type="submit" value="Report">
+</form>
+</body>
+</html>

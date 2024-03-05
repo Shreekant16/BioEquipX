@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Page</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+  .button-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+  }
+  .button-container a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+  }
+  .button-container a:hover {
+    background-color: #0056b3;
+  }
+  .navbar {
+    background-color: #007bff;
+    padding: 20px 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .navbar nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .navbar .logo h1 {
+    color: #fff;
+    margin: 0;
+  }
+
+  .navbar .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  .navbar .nav-links li {
+    margin-right: 20px;
+  }
+
+  .navbar .nav-links li:last-child {
+    margin-right: 0;
+  }
+
+  .navbar .nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .navbar .nav-links li a:hover {
+    color: #0056b3;
+  }
+
+  body {
+    margin: 0;
+    padding-top: 100px; /* Adjusted to accommodate the navbar height */
+  }
+
+  .footer {
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  .box {
+    position: absolute;
+    top: 90px; /* Adjust the top position to avoid the header */
+    left: 20px; /* Adjust the left position to give some space from the left edge */
+    bottom: 90px; /* Adjust the bottom position to avoid the footer */
+    width: 1035px; /* Adjust the width as needed */
+    background-color: #fff5eb; /* Adjust the background color as needed */
+    border-radius: 20px; /* Adjust the border-radius for curvy borders */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+    /* Center content horizontally and vertically */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+  .box-right-up{
+    position: absolute;
+    top: 90px; /* Adjust the top position to avoid the header */
+    right: 20px; /* Adjust the left position to give some space from the left edge */
+    bottom: 300px; /* Adjust the bottom position to avoid the footer */
+    width: 450px; /* Adjust the width as needed */
+    background-color: #fff5eb; /* Adjust the background color as needed */
+    border-radius: 20px; /* Adjust the border-radius for curvy borders */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: cursive;
+    color: #4169e1;
+    text-align: center;
+  }
+  .box-right-down{
+    position: absolute;
+    top: 450px; /* Adjust the top position to avoid the header */
+    right: 20px; /* Adjust the left position to give some space from the left edge */
+    bottom: 90px; /* Adjust the bottom position to avoid the footer */
+    width: 450px; /* Adjust the width as needed */
+    background-color: #fff5eb; /* Adjust the background color as needed */
+    border-radius: 20px; /* Adjust the border-radius for curvy borders */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: cursive;
+    color: #4169e1;
+    text-align: center;
+  }
+  .curvy-border {
+  border-radius: 20px; /* Adjust the border-radius for curvy borders */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); /* Add shadow */
+  margin: 10px; /* Adjust the margin between images */
+}
+.marquee-content {
+    font-size: 20px;
+    color: blue;
+  }
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <nav>
+    <div class="logo">
+      <h1>BiomedInv</h1>
+    </div>
+    <ul class="nav-links">
+      <li><a href="{% url 'nurse_login' %}">Nurse Login</a></li>
+      <li><a href="{% url 'engineer_login' %}">Engineer Login</a></li>
+      <li><a href="{% url 'manufacturer' %}">Manufacturers</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="button-container">
+  <a href="{% url 'nurse_login' %}">Nurse Login</a>
+  <a href="{% url 'engineer_login' %}">Engineer Login</a>
+  <a href="{% url 'manufacturer' %}">Manufacturers</a>
+</div>
+
+<div class="box">
+
+  <div class="images-container">
+    <img src="{% static 'images/home.jpg' %}" alt="ImageNotFound" class="curvy-border" style="width: 400px; height: 350px;">
+    <img src="{% static 'images/doc.png' %}" alt="ImageNotFound" class="curvy-border" style="width: 150px; height: 350px;">
+    <img src="{% static 'images/med.png' %}" alt="ImageNotFound" class="curvy-border" style="width: 400px; height: 350px;">
+  </div>
+</div>
+<marquee direction="left" behavior="scroll" scrollamount="5">
+    <div class="marquee-content">Welcome To BiomedInv</div>
+  </marquee>
+<div class="box-right-up">
+  <h2>Machine Information</h2>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero in lorem maximus, nec tincidunt nisi bibendum.
+    Nam vel ipsum sed arcu ultricies vehicula nec non elit. Proin in quam ut justo efficitur dignissim. Cras nec faucibus quam,
+    sed consequat arcu.
+  </p>
+  <p>
+    Sed vel velit libero. Proin eget felis felis. Sed eleifend, libero at eleifend hendrerit, nunc sapien accumsan nisi, vel
+    interdum leo risus et purus.
+  </p>
+</div>
+<div class="box-right-down">
+  <h2>Machine Features</h2>
+  <ul>
+    <li>High precision sensors for accurate readings</li>
+    <li>Advanced data processing capabilities</li>
+    <li>Intuitive user interface for easy operation</li>
+    <li>Remote monitoring and control options</li>
+    <li>Robust construction for durability</li>
+  </ul>
+</div>
+
+<footer class="footer">
+  <p>&copy; 2024 BiomedInv. All Rights Reserved. | <a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a></p>
+
+</footer>
+</body>
+</html>

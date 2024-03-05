@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manufacturers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .card {
+            width: calc(33.33% - 20px);
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h1 {
+            font-size: 18px;
+            margin-top: 0;
+            margin-bottom: 10px;
+            background-color: #f0f8ff; /* Light blue background */
+            padding: 10px; /* Add padding */
+            border-radius: 5px; /* Add border radius */
+            text-align: center; /* Center the text */
+        }
+
+        .card p {
+            margin: 5px 0;
+        }
+
+        .report-button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .navbar {
+          background-color: #007bff;
+          padding: 20px 0;
+          width: 100%;
+          position: fixed;
+          top: 0;
+        }
+
+        .navbar nav {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+        }
+
+        .navbar .logo h1 {
+          color: #fff;
+          margin: 0;
+        }
+
+        .navbar .nav-links {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+        }
+
+        .navbar .nav-links li {
+          margin-right: 20px;
+        }
+
+        .navbar .nav-links li:last-child {
+          margin-right: 0;
+        }
+
+        .navbar .nav-links li a {
+          color: #fff;
+          text-decoration: none;
+          transition: color 0.3s ease;
+        }
+
+        .navbar .nav-links li a:hover {
+          color: #f0f0f0;
+        }
+
+        /* Style the home button on hover */
+        .navbar .nav-links li a:hover {
+          background-color: #0056b3;
+          border-radius: 5px;
+          padding: 5px 10px;
+        }
+
+        body {
+          margin: 0;
+          padding-top: 70px;
+        }
+        home {
+          background-color: #c82333;
+        }
+
+        /* Style for the manufacturer name */
+        .manufacturer-name {
+            background-color: #f0f8ff; /* Light blue background */
+            padding: 10px; /* Add padding */
+            border-radius: 5px; /* Add border radius */
+            text-align: center; /* Center the text */
+        }
+    </style>
+</head>
+<body>
+<header class="navbar">
+  <nav>
+    <div class="logo">
+      <h1>BiomedInv</h1>
+    </div>
+    <ul class="nav-links">
+      <li class="home"><a href="{% url 'home' %}">Home</a></li>
+    </ul>
+  </nav>
+</header>
+<h1>Manufacturer Information</h1>
+<div class="card-container">
+    {% for manufacturer in data %}
+    <div class="card">
+        <div class="manufacturer-name">{{ manufacturer.0 }}</div> <!-- Wrapped manufacturer name in a div -->
+        <p><b>Phone</b>: 4565989887 </p>
+        <p><b>Email</b>: {{ manufacturer.0 }}@gmail.com </p>
+    </div>
+    {% endfor %}
+</div>
+</body>
+</html>
